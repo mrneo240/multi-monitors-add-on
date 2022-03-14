@@ -100,6 +100,9 @@ class MultiMonitorsAddOn {
 			return;
 		}
 
+		//@Note: Breaking on fedora gnome 41
+		return;
+
 		if(this._ov_settings.get_boolean(WORKSPACES_ONLY_ON_PRIMARY_ID))
 			this._ov_settings.set_boolean(WORKSPACES_ONLY_ON_PRIMARY_ID, false);
 		if(this._mu_settings.get_boolean(WORKSPACES_ONLY_ON_PRIMARY_ID))
@@ -111,6 +114,7 @@ class MultiMonitorsAddOn {
 		Main.mmOverview = [];
 		for (let idx = 0; idx < Main.layoutManager.monitors.length; idx++) {
 			if (idx != Main.layoutManager.primaryIndex) {
+				//@Note: Causing issues with MultiMonitorsControlsManager & ControlsManagerLayout
 				Main.mmOverview[idx] = new MMOverview.MultiMonitorsOverview(idx);
 			}
 		}
